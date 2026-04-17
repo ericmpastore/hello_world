@@ -1,3 +1,6 @@
+// Test function to show Hello World!
+// EPastore, 04/17/2026
+
 function helloWorld()
 {
     alert("Hello world!");
