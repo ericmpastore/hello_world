@@ -104,9 +104,34 @@ function varTest()
     // console.log(`My birthday is: ${MY_BDAY}`);
 }
 
+// Test function for variables
+// EPastore, 04/19/2026
+function numTest()
+{
+    let num = 123;
+    console.log(`The value of integer num is ${num}.`);
+
+    num = 123.123;
+    console.log(`The value of floating point num is ${num}.`);
+
+    console.log(`145e4 = ${145e4}`);
+    console.log(`145e-4 = ${145e-4}`);
+    console.log(`20 * '20' = ${20*'20'}`);
+    console.log(`'20' * 20 = ${'20'*20}`);
+    console.log(`Infinity is ${Infinity}`);
+    console.log(`${Number.POSITIVE_INFINITY}`);
+
+    num = 3.14567;
+    console.log(`The number ${num} to 2 places is ${num.toFixed(2)}`)
+    console.log(`The number ${num} to 2 places is ${num.toPrecision(2)}`)
+
+
+}
+
 
 // helloWorld()
 // docWrite()
 // domWrite()
 // strictMode()
-varTest()
+// varTest()
+numTest()
