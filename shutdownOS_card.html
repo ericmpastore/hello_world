@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShutdownOS</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d1117;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    }
+
+    .card {
+      width: 960px;
+      background: linear-gradient(145deg, #161b22, #0d1117);
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1f6feb 0%, #a371f7 55%, #f78166 100%);
+      padding: 36px 40px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .header-icon { font-size: 52px; line-height: 1; }
+    .header-text h1 {
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .header-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.82);
+      margin-top: 5px;
+    }
+    .badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+
+    /* ── 3-col grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #30363d;
+      border-top: 1px solid #30363d;
+    }
+
+    .lang-block { background: #0d1117; padding: 28px 24px 30px; }
+
+    .lang-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .lang-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+    .py   .lang-dot { background: #3572A5; box-shadow: 0 0 8px #3572A5; }
+    .cpp  .lang-dot { background: #f34b7d; box-shadow: 0 0 8px #f34b7d; }
+    .java .lang-dot { background: #e76f00; box-shadow: 0 0 8px #e76f00; }
+
+    .lang-name  { font-size: 15px; font-weight: 700; color: #e6edf3; }
+    .lang-ver   { font-size: 11px; color: #8b949e; margin-left: auto; font-family: 'Fira Code', monospace; }
+
+    /* code box */
+    .code-box {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #8b949e;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .code-box .file-label {
+      position: absolute;
+      top: 8px; right: 12px;
+      font-size: 10px;
+      color: #3d444d;
+    }
+
+    .kw   { color: #ff7b72; }
+    .fn   { color: #d2a8ff; }
+    .str  { color: #a5d6ff; }
+    .type { color: #ffa657; }
+    .num  { color: #79c0ff; }
+    .cls  { color: #f0883e; }
+    .cm   { color: #6e7681; font-style: italic; }
+
+    .explain { font-size: 12.5px; color: #8b949e; line-height: 1.65; }
+    .explain strong { color: #c9d1d9; }
+
+    /* ── How it works ── */
+    .how {
+      background: #161b22;
+      border-top: 1px solid #30363d;
+      padding: 22px 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .how-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .how-body h3 { font-size: 13px; font-weight: 700; color: #e6edf3; margin-bottom: 6px; }
+    .how-body p  { font-size: 12.5px; color: #8b949e; line-height: 1.65; }
+    .how-body code { color: #a371f7; font-family: 'Fira Code', monospace; font-size: 11.5px; }
+
+    /* ── Footer ── */
+    .footer {
+      background: #0d1117;
+      border-top: 1px solid #21262d;
+      padding: 13px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dots { display: flex; gap: 6px; }
+    .dots span { width: 9px; height: 9px; border-radius: 50%; }
+    .dots span:nth-child(1) { background: #ff5f57; }
+    .dots span:nth-child(2) { background: #febc2e; }
+    .dots span:nth-child(3) { background: #28c840; }
+    .footer-text { font-size: 11px; color: #3d444d; font-family: 'Fira Code', monospace; }
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-icon">⏻</div>
+    <div class="header-text">
+      <h1>ShutdownOS</h1>
+      <p>One command. Three languages. The same result.</p>
+    </div>
+    <div class="badge">EPastore · Apr 20 2026</div>
+  </div>
+
+  <!-- Code grid -->
+  <div class="grid">
+
+    <!-- Python -->
+    <div class="lang-block py">
+      <div class="lang-header">
+        <div class="lang-dot"></div>
+        <span class="lang-name">Python</span>
+        <span class="lang-ver">3.x</span>
+      </div>
+      <div class="code-box">
+        <span class="file-label">shutdown_os.py</span>
+<span class="kw">import</span> <span class="fn">os</span>
+
+<span class="kw">def</span> <span class="fn">main</span>():
+    <span class="fn">os</span>.<span class="fn">system</span>(
+        <span class="str">"shutdown /s /t 1"</span>
+    )
+
+<span class="kw">if</span> __name__ <span class="kw">==</span> <span class="str">'__main__'</span>:
+    <span class="fn">main</span>()
+      </div>
+      <p class="explain">
+        Uses Python's built-in <strong>os.system()</strong> to pass a shell
+        command to the OS. <strong>/s</strong> triggers a full shutdown;
+        <strong>/t 1</strong> sets a 1-second delay. Clean and minimal.
+      </p>
+    </div>
+
+    <!-- C++ -->
+    <div class="lang-block cpp">
+      <div class="lang-header">
+        <div class="lang-dot"></div>
+        <span class="lang-name">C++</span>
+        <span class="lang-ver">C++11+</span>
+      </div>
+      <div class="code-box">
+        <span class="file-label">shutdownOS.cpp</span>
+<span class="kw">#include</span> <span class="str">&lt;cstdlib&gt;</span>
+
+<span class="type">int</span> <span class="fn">main</span>()
+{
+    <span class="fn">system</span>(
+        <span class="str">"shutdown /s /t 1"</span>
+    );
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+      </div>
+      <p class="explain">
+        Calls C's standard <strong>system()</strong> from
+        <strong>&lt;cstdlib&gt;</strong>. A minimal compiled binary that
+        invokes the shell command directly — no runtime overhead.
+      </p>
+    </div>
+
+    <!-- Java -->
+    <div class="lang-block java">
+      <div class="lang-header">
+        <div class="lang-dot"></div>
+        <span class="lang-name">Java</span>
+        <span class="lang-ver">JDK 8+</span>
+      </div>
+      <div class="code-box">
+        <span class="file-label">shutdownOS.java</span>
+<span class="kw">import</span> java.io.IOException;
+
+<span class="kw">class</span> <span class="cls">ShutdownOS</span> {
+  <span class="kw">public static void</span> <span class="fn">main</span>
+      (String[] args) {
+    <span class="kw">try</span> {
+      Runtime.<span class="fn">getRuntime</span>()
+             .<span class="fn">exec</span>(<span class="str">"shutdown /s /t 1"</span>);
+    } <span class="kw">catch</span> (IOException e) {
+      e.<span class="fn">printStackTrace</span>();
+    }
+  }
+}
+      </div>
+      <p class="explain">
+        Uses <strong>Runtime.getRuntime().exec()</strong> to spawn a native
+        process from within the JVM. Wrapped in a <strong>try/catch</strong>
+        for proper <strong>IOException</strong> handling — idiomatic Java.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- How it works -->
+  <div class="how">
+    <div class="how-icon">🔍</div>
+    <div class="how-body">
+      <h3>How it works — under the hood</h3>
+      <p>
+        Every implementation sends the Windows command <code>shutdown /s /t 1</code>
+        to the OS shell. Despite different runtimes — an interpreter, a compiled
+        binary, and a JVM — the result is identical: a clean, graceful shutdown
+        after a 1-second countdown. The <em>language</em> changes; the
+        <em>system call</em> stays the same.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <span class="footer-text">EPastore · ShutdownOS · 2026</span>
+    <span class="footer-text">shutdown /s /t 1</span>
+  </div>
+
+</div>
+</body>
+</html>

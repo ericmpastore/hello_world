@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ShutdownOS",
+            "request": "launch",
+            "mainClass": "ShutdownOS",
+            "projectName": "App_HelloWorld_Delivery_4c086fa5"
+        },
+        {
+            "type": "java",
             "name": "HelloWorld",
             "request": "launch",
             "mainClass": "HelloWorld",
