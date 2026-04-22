@@ -125,7 +125,18 @@ function numTest()
     console.log(`The number ${num} to 2 places is ${num.toFixed(2)}`)
     console.log(`The number ${num} to 2 places is ${num.toPrecision(2)}`)
 
+}
 
+// Test function for strings
+// EPastore, 04/22/2026
+
+function stringTest()
+{
+    let sum = `${1+2+3}`;
+    console.log('This is JavaScript!');
+    console.log("This is JavaScript!");
+    console.log("The sum of the numbers is ${sum}.");
+    console.log(`The sum of the numbers is ${sum}.`);
 }
 
 
@@ -134,4 +145,5 @@ function numTest()
 // domWrite()
 // strictMode()
 // varTest()
-numTest()
+// numTest()
+stringTest()
