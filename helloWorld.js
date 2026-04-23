@@ -137,6 +137,9 @@ function stringTest()
     console.log("This is JavaScript!");
     console.log("The sum of the numbers is ${sum}.");
     console.log(`The sum of the numbers is ${sum}.`);
+
+    let empName = "Jane Chang";
+    console.log(`Num of chars: ${empName.length}`);
 }
 
 
