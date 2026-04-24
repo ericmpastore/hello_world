@@ -142,6 +142,16 @@ function stringTest()
     console.log(`Num of chars: ${empName.length}`);
 }
 
+// Date function for strings
+// EPastore, 04/24/2026
+function dateTest()
+{
+    var time = new Date();
+
+    console.log("Current time: \n",time);
+
+}
+
 
 // helloWorld()
 // docWrite()
@@ -149,4 +159,5 @@ function stringTest()
 // strictMode()
 // varTest()
 // numTest()
-stringTest()
+// stringTest()
+dateTest();
